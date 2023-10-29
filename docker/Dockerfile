@@ -2,6 +2,8 @@ ARG  TAG=12.2.2-cudnn8-devel-ubuntu22.04
 
 FROM nvidia/cuda:${TAG}
 
+RUN useradd -m vscode
+
 USER vscode
 
 WORKDIR /workspace
