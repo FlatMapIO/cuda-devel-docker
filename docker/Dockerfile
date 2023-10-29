@@ -4,6 +4,10 @@ FROM nvidia/cuda:${TAG}
 
 WORKDIR /workspace
 
+ENV PATH=/opt/homebrew/bin:$PATH
+
+USER vscode
+
 COPY ./install.sh /workspace
 
 RUN ./install.sh
