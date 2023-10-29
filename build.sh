@@ -9,6 +9,6 @@ for version in "11.8.0" "12.1.0"; do
         ./docker
     docker push huodon/cuda-devel:$tag
     docker rmi huodon/cuda-devel:$tag
-    docker image purge -f
+    docker image prune -f
     docker system prune -f
 done
