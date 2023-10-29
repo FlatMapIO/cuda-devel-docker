@@ -10,9 +10,8 @@ RUN useradd -m vscode
 
 WORKDIR /workspace
 
-
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
-	ln -s /home/vscode/linuxbrew/.linuxbrew /opt/homebrew; \
+	ln -s /home/linuxbrew/.linuxbrew /opt/homebrew; \
 	/opt/homebrew/bin/brew install \
 		git git-lfs \
 		ripgrep difftastic nvim \
