@@ -7,7 +7,7 @@ fi
 
 echo ">>> setup base"
 sudo apt-get update
-sudo sudo apt install -y curl git libgl1-mesa-dev libglib2.0-0
+sudo apt install -y curl git libgl1-mesa-dev libglib2.0-0
 
 echo ">>> install homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
