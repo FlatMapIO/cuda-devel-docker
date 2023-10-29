@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 # see also https://hub.docker.com/r/nvidia/cuda/tags
 for version in "11.8.0" "12.1.0"; do
     tag="${version}-cudnn8-devel-ubuntu22.04"
@@ -9,4 +8,7 @@ for version in "11.8.0" "12.1.0"; do
         -t huodon/cuda-devel:$tag \
         ./docker
     docker push huodon/cuda-devel:$tag
+    docker rmi huodon/cuda-devel:$tag
+    docker image purge -f
+    docker system prune -f
 done
