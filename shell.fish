@@ -8,4 +8,5 @@ docker run --rm -it \
     -v $HOME/.config:/home/vscode/.config \
     -v $HOME/.vscode-insdiers:/home/vscode/.vscode-insdiers \
     -v $HOME/.codeium:/home/vscode/.codeium \
+    -v $PWD:/workspace \
     huodon/cuda-devel
