@@ -22,7 +22,7 @@ echo ">>> install apps"
 	git git-lfs \
 	ripgrep difftastic nvim \
 	fish lsd bat htop aria2 fd \
-	python ffmpeg
+	python ffmpeg cmake ninja
 
 # clean
 echo ">>> clean up"
