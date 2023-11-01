@@ -1,8 +1,5 @@
-ARG  TAG=12.2.2-cudnn8-devel-ubuntu22.04
-
+ARG TAG=12.2.2-cudnn8-devel-ubuntu22.04
 ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
 
 FROM nvidia/cuda:${TAG}
 
@@ -10,8 +7,8 @@ RUN apt-get update && \
   apt-get -y install sudo curl git
 
 # RUN adduser --disabled-password --gecos '' vscode
-RUN groupadd --gid $USER_GID $USERNAME; \
-  useradd --uid $USER_UID --gid $USER_GID -m $USERNAME; \
+RUN groupadd --gid 1000 $USERNAME; \
+  useradd --uid 1000 --gid 1000 -m $USERNAME; \
   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME; \
   chmod 0440 /etc/sudoers.d/$USERNAME
 
