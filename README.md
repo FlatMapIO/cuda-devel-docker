@@ -3,9 +3,9 @@
 
 
 - nvidia/cuda:{11.8.0, 12.1.1}-cudnn8-devel-ubuntu22.04
-- (TODO)[nvcr.io/nvidia/tensorrt:23.01-py3](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/running.html)
+- [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM)
 
-# Enter shell
+## Enter shell
 ```fish
 cd <you-workspace>
 
