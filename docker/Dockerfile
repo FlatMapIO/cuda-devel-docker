@@ -20,7 +20,7 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 	/opt/homebrew/bin/brew install \
 		git git-lfs \
 		ripgrep difftastic nvim \
-		fish lsd bat htop aria2 fd \
+		fish lsd bat htop aria2 fd bwm-ng \
 		python ffmpeg cmake ninja
 
 RUN /opt/homebrew/bin/brew cleanup --prune=all; \
