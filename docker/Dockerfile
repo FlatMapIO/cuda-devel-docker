@@ -23,7 +23,8 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 		fish lsd bat htop aria2 fd \
 		python ffmpeg cmake ninja
 
-RUN sudo apt-get remove -y git curl; \
+RUN /opt/homebrew/bin/brew cleanup --prune=all; \
+	sudo apt-get remove -y git curl; \
   sudo rm -rf /var/lib/apt/lists/*
 
 ENV PATH=/opt/homebrew/bin:$PATH
