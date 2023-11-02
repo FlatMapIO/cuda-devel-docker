@@ -42,4 +42,6 @@ pip install -r tools/ci_build/github/linux/docker/inference/x64/python/cpu/scrip
   --build --parallel \
   --cmake_extra_defines ONNXRUNTIME_VERSION=$(cat ./VERSION_NUMBER) \
   CMAKE_CUDA_ARCHITECTURES=native
+
+# pip3 install /build/Linux/Release/dist/*.whl
 ```
