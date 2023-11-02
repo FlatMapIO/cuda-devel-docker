@@ -1,7 +1,7 @@
 ARG TAG=12.2.2-cudnn8-devel-ubuntu22.04
 
-# FROM nvidia/cuda:${TAG}
-FROM ubuntu
+FROM nvidia/cuda:${TAG}
+# FROM ubuntu
 
 RUN apt-get update && \
   apt-get -y install sudo curl git
