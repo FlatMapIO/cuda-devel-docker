@@ -6,13 +6,13 @@ FROM nvidia/cuda:${TAG}
 RUN apt-get update && \
   apt-get -y install sudo curl git
 
-# RUN adduser --disabled-password --gecos '' vscode
-RUN groupadd --gid 1000 vscode; \
-  useradd --uid 1000 --gid 1000 -m vscode; \
-  echo vscode ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/vscode; \
-  chmod 0440 /etc/sudoers.d/vscode
+# RUN adduser --disabled-password --gecos '' sa
+RUN groupadd --gid 1000 sa; \
+  useradd --uid 1000 --gid 1000 -m sa; \
+  echo sa ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/sa; \
+  chmod 0440 /etc/sudoers.d/sa
 
-USER vscode
+USER sa
 WORKDIR /workspace
 
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
