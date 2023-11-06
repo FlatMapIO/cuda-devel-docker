@@ -20,7 +20,7 @@ git clone --depth 1 https://github.com/ggerganov/llama.cpp.git
 # 进入容器 fish shell
 ../cuda-devel-docker/shell.fish # 或 ./shell.fish 12.2.2
 mkdir build; cd build
-cmake .. -DLLAMA_CUBLAS=ON
+cmake .. -DLLAMA_CUBLAS=ON -DLLAMA_STATIC=ON
 cmake --build . --config Release
 ls bin
 ```
