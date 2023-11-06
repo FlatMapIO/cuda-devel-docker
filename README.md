@@ -20,9 +20,7 @@ git clone --depth 1 https://github.com/ggerganov/llama.cpp.git
 # 进入容器 fish shell
 ../cuda-devel-docker/shell.fish # 或 ./shell.fish 12.2.2
 mkdir build; cd build
-
-# -DLLAMA_STATIC=ON 会产生巨大的 binary, 但对于便携化部署和分发来说是有利的.
-cmake .. -DLLAMA_CUBLAS=ON -DLLAMA_STATIC=ON
+cmake .. -DLLAMA_CUBLAS=ON
 cmake --build . --config Release
 ls bin
 ```
