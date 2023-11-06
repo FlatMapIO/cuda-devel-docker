@@ -8,9 +8,9 @@
 - 工具: homebrew + 各种命令行工具以及开发工具
 
 
-## Enter shell
+## Examples
 
-构建 llama.cpp
+### 构建 llama.cpp
 
 ```fish
 
@@ -24,8 +24,6 @@ cmake .. -DLLAMA_CUBLAS=ON
 cmake --build . --config Release
 ls bin
 ```
-
-## Examples
 
 ### build onnxruntime-cuda
 
