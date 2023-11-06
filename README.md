@@ -1,18 +1,28 @@
+- 本镜像提供三个主要的 CUDA 版本开发环境, 可用于构建信赖 CUDA 的应用而不把宿主 OS 弄的一团遭
+- 安装了 homebrew 以及各种常用的开发环境和命令行工具, 比如 lsd fd rg python cmake 等
+- 容器使用 sa 用户,如果 host 同样使用 sa, 通过 volume 映射可以得到无缝的使用习惯
 
 ## Runtime
 
-- `nvidia/cuda:{11.8.0, 12.1.1, 12.2.2}-cudnn8-devel-ubuntu22.04`
-- homebrew + common tools
+- 基础镜像:`nvidia/cuda:{11.8.0, 12.1.1, 12.2.2}-cudnn8-devel-ubuntu22.04`
+- 工具: homebrew + 各种命令行工具以及开发工具
+
 
 ## Enter shell
 
+构建 llama.cpp
+
 ```fish
+
 cd <you-workspace>
+git clone --depth 1 https://github.com/ggerganov/llama.cpp.git
 
-./shell.fish
-
-
-# build anything
+# 进入容器 fish shell
+../cuda-devel-docker/shell.fish # 或 ./shell.fish 12.2.2
+mkdir build; cd build
+cmake .. -DLLAMA_CUBLAS=ON
+cmake --build . --config Release
+ls bin
 ```
 
 ## Examples

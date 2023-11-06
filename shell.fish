@@ -1,5 +1,8 @@
 #!/usr/bin/env fish
 
+set -l tag $argv[1]
+test -z "$tag"; set tag '12.1.1'
+
 docker run --rm -it \
     --gpus all \
     --user sa \
@@ -11,4 +14,4 @@ docker run --rm -it \
     -v $HOME/.vscode-insdiers:/home/sa/.vscode-insdiers \
     -v $HOME/.codeium:/home/sa/.codeium \
     -v $PWD:/workspace \
-    huodon/cuda-devel:12.1.1
+    huodon/cuda-devel:$tag
