@@ -15,9 +15,6 @@ RUN groupadd --gid 1000 sa; \
 USER sa
 WORKDIR /workspace
 
-ENV PATH=//opt/homebrew/bin:/home/sa/.cargo/bin:$PATH
-ENV HOMEBREW_CURL_PATH=/opt/homebrew/bin/curl
-
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
 	sudo ln -s /home/linuxbrew/.linuxbrew /opt/homebrew; \
 	/opt/homebrew/bin/brew install \
@@ -34,6 +31,7 @@ RUN /opt/homebrew/bin/brew cleanup --prune=all; \
 	sudo apt-get remove -y git curl; \
   sudo rm -rf /var/lib/apt/lists/*
 
-ENV PATH=:$PATH
+ENV PATH=//opt/homebrew/bin:/home/sa/.cargo/bin:$PATH
+ENV HOMEBREW_CURL_PATH=/opt/homebrew/bin/curl
 
 CMD fish
