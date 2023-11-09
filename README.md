@@ -1,11 +1,17 @@
-- 本镜像提供三个主要的 CUDA 版本开发环境, 可用于构建依赖 CUDA 的应用而不把宿主 Host OS 弄的一团遭
-- 安装了 homebrew 以及各种常用的开发环境和命令行工具, 比如 lsd fd rg python cmake 等
+- 本镜像提供三个主要的 CUDA 版本开发环境, 用于构建和运行依赖 CUDA 环境的的应用
+- 安装了 homebrew 以及各种常用的开发环境和命令行工具, 比如 lsd fd rg python rustup cmake 等
 - 容器使用 sa 用户,如果 Host 同样使用 sa, 通过 volume 映射可以得到无缝的使用习惯
 
-## Runtime
+## Usage
 
 - 基础镜像:`nvidia/cuda:{11.8.0, 12.1.1, 12.2.2}-cudnn8-devel-ubuntu22.04`
 - 工具: homebrew + 各种命令行工具以及开发工具
+
+```bash
+docker pull huodon/cuda-devel:11.8.0
+docker pull huodon/cuda-devel:12.1.1
+docker pull huodon/cuda-devel:12.2.2
+```
 
 
 ## Examples
