@@ -9,6 +9,7 @@ docker run --rm -it \
     -v /etc/apt/sources.list:/etc/apt/sources.list \
     -v $HOME/.gitconfig:/home/sa/.gitconfig \
     -v $HOME/.cache:/home/sa/.cache \
+    -v $HOME/.cargo:/home/sa/.cargo \
     -v $HOME/.config:/home/sa/.config \
     -v $HOME/.local:/home/sa/.local \
     -v $HOME/.vscode-insdiers:/home/sa/.vscode-insdiers \
