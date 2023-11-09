@@ -16,8 +16,7 @@ USER sa
 WORKDIR /workspace
 
 ENV PATH=//opt/homebrew/bin:/home/sa/.cargo/bin:$PATH
-
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+ENV HOMEBREW_CURL_PATH=/opt/homebrew/bin/curl
 
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
 	sudo ln -s /home/linuxbrew/.linuxbrew /opt/homebrew; \
@@ -25,7 +24,9 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 		git git-lfs \
 		ripgrep difftastic nvim \
 		fish lsd bat htop aria2 fd \
-		python ffmpeg cmake ninja
+		rustup-init python ffmpeg cmake ninja
+
+RUN rustup-init -y
 
 # -------------------------------------------------
 # cleanup
