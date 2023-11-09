@@ -21,7 +21,7 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 		git git-lfs \
 		ripgrep difftastic nvim \
 		fish lsd bat htop aria2 fd \
-		rustup-init python ffmpeg cmake ninja
+		pkg-config rustup-init python ffmpeg cmake ninja
 
 RUN /opt/homebrew/bin/rustup-init -y
 
