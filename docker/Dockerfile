@@ -23,7 +23,7 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 		fish lsd bat htop aria2 fd \
 		rustup-init python ffmpeg cmake ninja
 
-RUN rustup-init -y
+RUN /opt/homebrew/bin/rustup-init -y
 
 # -------------------------------------------------
 # cleanup
