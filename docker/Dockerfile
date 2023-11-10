@@ -31,7 +31,7 @@ RUN /opt/homebrew/bin/brew cleanup --prune=all; \
 	sudo apt-get remove -y git curl; \
   sudo rm -rf /var/lib/apt/lists/*
 
-ENV PATH=//opt/homebrew/bin:/home/sa/.cargo/bin:$PATH
+ENV PATH=/opt/homebrew/bin:/home/sa/.cargo/bin:$PATH
 ENV HOMEBREW_CURL_PATH=/opt/homebrew/bin/curl
 
 CMD fish
