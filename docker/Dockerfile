@@ -25,7 +25,8 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 
 RUN /opt/homebrew/bin/rustup-init -y; \
 	sudo ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python; \
-	sudo ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip
+	sudo ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip; \
+	git lfs install
 
 # -------------------------------------------------
 # cleanup
