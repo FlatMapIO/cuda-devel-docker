@@ -55,7 +55,7 @@ docker run --rm -it \
     -v $HOME/.codeium:/home/sa/.codeium \
     -v $HOME/.pkgx:/home/sa/.pkgx \
     -v $PWD:/workspace \
-    huodon/cuda-devel:$tag pkgx +python@3.11 +cmake fish
+    huodon/cuda-devel:12.1.1 pkgx +python@3.11 +cmake fish
 
 # cmake
 mkdir build; cd build
