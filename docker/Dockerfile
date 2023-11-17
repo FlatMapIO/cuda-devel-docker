@@ -22,6 +22,7 @@ RUN pkgx +fish +python@3.11
 # -------------------------------------------------
 # cleanup
 RUN sudo apt-get remove -y curl; \
+  sudo apt-get autoremove; \
   sudo rm -rf /var/lib/apt/lists/*
 
 CMD pkgx +python@3.11 fish
