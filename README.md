@@ -13,6 +13,26 @@ docker pull huodon/cuda-devel:12.2.2
 ```
 
 
+## Shell
+
+```sh
+docker run --rm -it \
+    --gpus all \
+    --user sa \
+    -v /etc/apt/sources.list:/etc/apt/sources.list \
+    -v $HOME/.gitconfig:/home/sa/.gitconfig \
+    -v $HOME/.cache:/home/sa/.cache \
+    -v $HOME/.cargo:/home/sa/.cargo \
+    -v $HOME/.config:/home/sa/.config \
+    -v $HOME/.local:/home/sa/.local \
+    -v $HOME/.vscode-insdiers:/home/sa/.vscode-insdiers \
+    -v $HOME/.codeium:/home/sa/.codeium \
+    -v $HOME/.pkgx:/home/sa/.pkgx \
+    -v $PWD:/workspace \
+    huodon/cuda-devel:$tag pkgx +python@3.11 +zig fish
+
+```
+
 ## Examples
 
 ### 构建 llama.cpp
@@ -23,7 +43,21 @@ cd <you-workspace>
 git clone --depth 1 https://github.com/ggerganov/llama.cpp.git
 
 # 进入容器 fish shell
-../cuda-devel-docker/shell.fish # 或 ./shell.fish 12.2.2
+
+docker run --rm -it \
+    --gpus all \
+    --user sa \
+    -v /etc/apt/sources.list:/etc/apt/sources.list \
+    -v $HOME/.cache:/home/sa/.cache \
+    -v $HOME/.config:/home/sa/.config \
+    -v $HOME/.local:/home/sa/.local \
+    -v $HOME/.vscode-insdiers:/home/sa/.vscode-insdiers \
+    -v $HOME/.codeium:/home/sa/.codeium \
+    -v $HOME/.pkgx:/home/sa/.pkgx \
+    -v $PWD:/workspace \
+    huodon/cuda-devel:$tag pkgx +python@3.11 +cmake fish
+
+# cmake
 mkdir build; cd build
 cmake .. -DLLAMA_CUBLAS=ON
 cmake --build . --config Release
