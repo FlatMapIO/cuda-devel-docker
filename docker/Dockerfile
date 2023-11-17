@@ -1,10 +1,9 @@
 ARG TAG=12.2.2-cudnn8-devel-ubuntu22.04
 
 FROM nvidia/cuda:${TAG}
-# FROM ubuntu
 
-RUN apt-get update && \
-  apt-get -y install sudo curl git
+RUN apt-get update; \
+  apt-get -y install sudo curl libgl1-mesa-dev libglib2.0-0
 
 # RUN adduser --disabled-password --gecos '' sa
 RUN groupadd --gid 1000 sa; \
@@ -15,26 +14,14 @@ RUN groupadd --gid 1000 sa; \
 USER sa
 WORKDIR /workspace
 
-RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
-	sudo ln -s /home/linuxbrew/.linuxbrew /opt/homebrew; \
-	/opt/homebrew/bin/brew install \
-		git git-lfs \
-		ripgrep difftastic nvim \
-		fish lsd bat htop aria2 fd \
-		pkg-config rustup-init python ffmpeg cmake ninja
+RUN curl https://pkgx.sh | sh
+RUN pkgx integrate
 
-RUN /opt/homebrew/bin/rustup-init -y; \
-	sudo ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python; \
-	sudo ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip; \
-	git lfs install
+RUN pkgx +fish +python@3.11
 
 # -------------------------------------------------
 # cleanup
-RUN /opt/homebrew/bin/brew cleanup --prune=all; \
-	sudo apt-get remove -y git curl; \
+RUN sudo apt-get remove -y curl; \
   sudo rm -rf /var/lib/apt/lists/*
 
-ENV PATH=/opt/homebrew/bin:/home/sa/.cargo/bin:$PATH
-ENV HOMEBREW_CURL_PATH=/opt/homebrew/bin/curl
-
-CMD fish
+CMD pkgx +python@3.11 fish
