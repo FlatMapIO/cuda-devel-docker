@@ -1,5 +1,4 @@
 - 本镜像提供三个主要的 CUDA 版本开发环境, 用于构建和运行依赖 CUDA 环境的的应用
-- 安装了 homebrew 以及各种常用的开发环境和命令行工具, 比如 lsd fd rg python rustup cmake 等
 - 容器使用 sa 用户,如果 Host 同样使用 sa, 通过 volume 映射可以得到无缝的使用习惯
 
 ## Usage
