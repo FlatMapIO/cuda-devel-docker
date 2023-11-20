@@ -1,9 +1,10 @@
 ARG TAG=12.2.2-cudnn8-devel-ubuntu22.04
 
 FROM nvidia/cuda:${TAG}
+# FROM ubuntu
 
-RUN apt-get update; \
-  apt-get -y install sudo curl libgl1-mesa-dev libglib2.0-0
+RUN apt-get update && \
+  apt-get -y install sudo curl git
 
 # RUN adduser --disabled-password --gecos '' sa
 RUN groupadd --gid 1000 sa; \
@@ -13,26 +14,37 @@ RUN groupadd --gid 1000 sa; \
 
 USER sa
 WORKDIR /workspace
-RUN curl https://pkgx.sh | sh
-RUN pkgx integrate
 
-# RUN mkdir -p ~/.pkgx/fishshell.com/v\*/bin/; \
-#   touch ~/.pkgx/fishshell.com/v\*/bin/fish; \
-#   chmod +x ~/.pkgx/fishshell.com/v\*/bin/fish; \
-#   sudo ln -s ~/.pkgx/fishshell.com/v\*/bin/fish /usr/local/bin/fish; \
-#   rm -rf ~/.pkgx/fishshell.com
+# RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
+# 	sudo ln -s /home/linuxbrew/.linuxbrew /opt/homebrew; \
+# 	/opt/homebrew/bin/brew install \
+# 		git git-lfs \
+# 		ripgrep difftastic nvim \
+# 		fish lsd bat htop aria2 fd \
+# 		pkg-config rustup-init python ffmpeg cmake ninja
 
-RUN echo '#!/usr/bin/env bash' > fish; \
-  echo 'eval "$(pkgx --shellcode)"' >> fish; \
-  echo 'dev' >> fish; \
-  echo 'fish "$@"' >> fish; \
-  chmod +x fish; \
-  sudo mv fish /usr/local/bin
+# RUN /opt/homebrew/bin/rustup-init -y; \
+# 	sudo ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python; \
+# 	sudo ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip; \
+# 	git lfs install
+
+RUN curl https://pkgx.sh | sh; pkgx integrate
+
+RUN mkdir -p /home/linuxbrew/.linuxbrew; \
+	sudo ln -s /home/linuxbrew/.linuxbrew /opt/homebrew; \
+	rm -rf /home/linuxbrew
 
 # -------------------------------------------------
 # cleanup
-RUN sudo apt-get remove -y curl; \
-  sudo apt-get autoremove; \
+# RUN /opt/homebrew/bin/brew cleanup --prune=all; \
+# 	sudo apt-get remove -y git curl; \
+#   sudo rm -rf /var/lib/apt/lists/*
+
+RUN sudo apt-get remove -y git curl; \
   sudo rm -rf /var/lib/apt/lists/*
 
-CMD pkgx +fish fish
+ENV MODULAR_HOME=$HOME/.modular
+ENV PATH=/opt/homebrew/bin:$HOME/.cargo/bin:$HOME/.bun/bin:$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH
+ENV HOMEBREW_CURL_PATH=/opt/homebrew/bin/curl
+
+CMD which fish && fish -l || pkgx +fish fish -l

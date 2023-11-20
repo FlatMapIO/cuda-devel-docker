@@ -19,7 +19,6 @@ docker pull huodon/cuda-devel:12.2.2
 # 以下 volume 映射可保持容器和宿主在使用上几乎相同.
 docker run --rm -it \
     --gpus all \
-    --user sa \
     -v /etc/apt/sources.list:/etc/apt/sources.list \
     -v $HOME/.gitconfig:/home/sa/.gitconfig \
     -v $HOME/.cache:/home/sa/.cache \
@@ -29,9 +28,9 @@ docker run --rm -it \
     -v $HOME/.vscode-insdiers:/home/sa/.vscode-insdiers \
     -v $HOME/.codeium:/home/sa/.codeium \
     -v $HOME/.pkgx:/home/sa/.pkgx \
+    -v /home/linuxbrew:/home/linuxbrew \
     -v $PWD:/workspace \
-    huodon/cuda-devel:$tag pkgx +python@3.11 +zig fish
-
+    huodon/cuda-devel:12.2.2
 ```
 
 ## Examples
