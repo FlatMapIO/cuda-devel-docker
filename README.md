@@ -1,6 +1,6 @@
 - 本镜像提供三个主要的 CUDA 版本开发环境, 用于构建和运行依赖 CUDA 环境的的应用
-- 容器使用 sa 用户,如果 Host 同样使用 sa, 通过 volume 映射可以得到无缝的使用习惯
-- [pkgx](https://pkgx.sh/)
+- 容器用户为 sa, 使用 `-v` 使用 `-v ~/.config:/home/sa/.config` 映射配置便容器和宿主有相同的使用习惯
+- 在基础镜像上只安装了 [pkgx](https://pkgx.sh/)
 
 ## Usage
 
@@ -16,6 +16,8 @@ docker pull huodon/cuda-devel:12.2.2
 ## Shell
 
 ```sh
+# 以下 volume 映射可保持容器和宿主在使用上几乎相同.
+# pkgx 映射可以跑过容器下载包的过程
 docker run --rm -it \
     --gpus all \
     --user sa \
