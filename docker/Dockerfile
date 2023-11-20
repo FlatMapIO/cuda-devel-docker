@@ -23,7 +23,9 @@ RUN pkgx integrate
 #   rm -rf ~/.pkgx/fishshell.com
 
 RUN echo '#!/usr/bin/env bash' > fish; \
-  echo 'pkgx +fish -- fish "$@"' >> fish; \
+  echo 'eval "$(pkgx --shellcode)"' >> fish; \
+  echo 'dev' >> fish; \
+  echo 'fish "$@"' >> fish; \
   chmod +x fish; \
   sudo mv fish /usr/local/bin
 

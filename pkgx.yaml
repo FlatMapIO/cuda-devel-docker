@@ -1,0 +1,6 @@
+dependencies:
+  fish: latest
+  git: latest
+  python: 3.11
+env:
+  SRCROOT: ${{srcroot}}
