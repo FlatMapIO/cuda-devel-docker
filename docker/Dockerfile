@@ -17,8 +17,6 @@ WORKDIR /workspace
 RUN curl https://pkgx.sh | sh
 RUN pkgx integrate
 
-RUN pkgx +fish +python@3.11
-
 # -------------------------------------------------
 # cleanup
 RUN sudo apt-get remove -y curl; \
