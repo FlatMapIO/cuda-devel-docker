@@ -15,18 +15,6 @@ RUN groupadd --gid 1000 sa; \
 USER sa
 WORKDIR /workspace
 
-# RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
-# 	sudo ln -s /home/linuxbrew/.linuxbrew /opt/homebrew; \
-# 	/opt/homebrew/bin/brew install \
-# 		git git-lfs \
-# 		ripgrep difftastic nvim \
-# 		fish lsd bat htop aria2 fd \
-# 		pkg-config rustup-init python ffmpeg cmake ninja
-
-# RUN /opt/homebrew/bin/rustup-init -y; \
-# 	sudo ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python; \
-# 	sudo ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip; \
-# 	git lfs install
 
 RUN curl https://pkgx.sh | sh; pkgx integrate
 
@@ -36,9 +24,6 @@ RUN mkdir -p /home/linuxbrew/.linuxbrew; \
 
 # -------------------------------------------------
 # cleanup
-# RUN /opt/homebrew/bin/brew cleanup --prune=all; \
-# 	sudo apt-get remove -y git curl; \
-#   sudo rm -rf /var/lib/apt/lists/*
 
 RUN sudo apt-get remove -y git curl; \
   sudo rm -rf /var/lib/apt/lists/*
