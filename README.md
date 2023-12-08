@@ -91,3 +91,11 @@ pip install -r tools/ci_build/github/linux/docker/inference/x64/python/cpu/scrip
 
 # pip3 install /build/Linux/Release/dist/*.whl
 ```
+
+## 常见问题
+
+### cv2 模块找不到 libgl.so 等
+```
+pip uninstall python-opencv
+pip install python-opencv-headless
+```
