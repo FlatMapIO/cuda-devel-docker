@@ -37,30 +37,54 @@ docker run --rm -it \
 
 ### 构建 llama.cpp
 
-```fish
 
+```fish
 cd <you-workspace>
 git clone --depth 1 https://github.com/ggerganov/llama.cpp.git
+```
 
-# 进入容器 fish shell
+turch docker-compose.yml
 
-docker run --rm -it \
-    --gpus all \
-    --user sa \
-    -v /etc/apt/sources.list:/etc/apt/sources.list \
-    -v $HOME/.cache:/home/sa/.cache \
-    -v $HOME/.config:/home/sa/.config \
-    -v $HOME/.local:/home/sa/.local \
-    -v $HOME/.vscode-insdiers:/home/sa/.vscode-insdiers \
-    -v $HOME/.codeium:/home/sa/.codeium \
-    -v $HOME/.pkgx:/home/sa/.pkgx \
-    -v $PWD:/workspace \
-    huodon/cuda-devel:12.1.1 pkgx +python@3.11 +cmake fish
+```yml
+version: "3.8"
 
-# cmake
+services:
+  app:
+    image: huodon/cuda-devel:12.1.1
+    shm_size: 1gb
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    user: sa
+    working_dir: /workspace
+    volumes:
+      - ~/.config:/home/sa/.config
+      - ~/.cache:/home/sa/.cache
+      - ~/.vscode-server:/home/sa/.vscode-server
+      - ~/.vscode-server-insiders:/home/sa/.vscode-server-insiders
+      - ~/.codeium/:/home/sa/.codeium
+      - ~/.cargo/:/home/sa/.cargo
+      # ====================================================================
+      - ../Nodels/:/Models
+      - .:/workspace
+    ports:
+      - 8080:8080
+```
+
+
+```fish
+# install deps
+env +python@3.11 +cmake
+
+# build
 mkdir build; cd build
 cmake .. -DLLAMA_CUBLAS=ON
 cmake --build . --config Release
+
 ls bin
 ```
 
