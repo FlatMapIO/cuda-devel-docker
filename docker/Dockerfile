@@ -32,4 +32,4 @@ ENV MODULAR_HOME=$HOME/.modular
 ENV PATH=/opt/homebrew/bin:$HOME/.cargo/bin:$HOME/.bun/bin:$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH
 ENV HOMEBREW_CURL_PATH=/opt/homebrew/bin/curl
 
-CMD which fish && fish -l || pkgx +fish fish -l
+# CMD which fish && fish -l || pkgx +fish fish -l
