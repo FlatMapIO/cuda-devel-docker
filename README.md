@@ -4,12 +4,11 @@
 - 目录映射使容器和宿主有几乎相同的使用习惯和体验, 避免发生频繁且重复的网络 IO
 ## Usage
 
-- 基础镜像:`nvidia/cuda:{11.8.0, 12.1.1, 12.2.2}-cudnn8-devel-ubuntu22.04`
+- 基础镜像:`nvidia/cuda:{11.8.0, 12.4.1}-cudnn8-devel-ubuntu22.04`
 
 ```bash
 docker pull huodon/cuda-devel:11.8.0
-docker pull huodon/cuda-devel:12.1.1
-docker pull huodon/cuda-devel:12.2.2
+docker pull huodon/cuda-devel:12.4.1
 ```
 
 
