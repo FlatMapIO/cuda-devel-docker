@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # see also https://hub.docker.com/r/nvidia/cuda/tags
-for version in "12.1.1"  "12.2.2" "11.8.0"; do
+for version in "12.4.1" "11.8.0"; do
     tag="${version}-cudnn8-devel-ubuntu22.04"
     docker build \
         --build-arg TAG=$tag \
