@@ -1,4 +1,4 @@
-ARG TAG=12.2.2-cudnn8-devel-ubuntu22.04
+ARG TAG=12.6.1-cudnn-devel-ubuntu22.04
 
 FROM nvidia/cuda:${TAG}
 # FROM ubuntu
