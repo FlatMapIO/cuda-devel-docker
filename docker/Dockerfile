@@ -18,9 +18,7 @@ WORKDIR /workspace
 
 RUN curl https://pkgx.sh | sh; pkgx integrate
 
-RUN mkdir -p /home/linuxbrew/.linuxbrew; \
-	sudo ln -s /home/linuxbrew/.linuxbrew /opt/homebrew; \
-	rm -rf /home/linuxbrew
+RUN	sudo ln -s /home/linuxbrew/.linuxbrew /opt/homebrew
 
 # -------------------------------------------------
 # cleanup
