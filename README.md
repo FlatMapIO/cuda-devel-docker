@@ -2,14 +2,8 @@
 - 容器用户为 sa, 不污染 root 用户, 避免各种非 root 软件安装时遇到麻烦
 - 在基础镜像上只安装了 [pkgx](https://pkgx.sh/)
 - 目录映射使容器和宿主有几乎相同的使用习惯和体验, 避免发生频繁且重复的网络 IO
+
 ## Usage
-
-- 基础镜像:`nvidia/cuda:{11.8.0, 12.4.1}-cudnn8-devel-ubuntu22.04`
-
-```bash
-docker pull huodon/cuda-devel:11.8.0
-docker pull huodon/cuda-devel:12.4.1
-```
 
 
 ## Shell
@@ -29,7 +23,7 @@ docker run --rm -it \
     -v $HOME/.pkgx:/home/sa/.pkgx \
     -v /home/linuxbrew:/home/linuxbrew \
     -v $PWD:/workspace \
-    huodon/cuda-devel:12.2.2
+    huodon/cuda-devel:12.6.1
 ```
 
 ## Examples
@@ -49,7 +43,7 @@ version: "3.8"
 
 services:
   app:
-    image: huodon/cuda-devel:12.1.1
+    image: huodon/cuda-devel:12.6.1
     shm_size: 1gb
     deploy:
       resources:
@@ -64,11 +58,10 @@ services:
       - ~/.config:/home/sa/.config
       - ~/.cache:/home/sa/.cache
       - ~/.vscode-server:/home/sa/.vscode-server
-      - ~/.vscode-server-insiders:/home/sa/.vscode-server-insiders
       - ~/.codeium/:/home/sa/.codeium
       - ~/.cargo/:/home/sa/.cargo
       # ====================================================================
-      - ../Nodels/:/Models
+      - ../nodels/:/models
       - .:/workspace
     ports:
       - 8080:8080
