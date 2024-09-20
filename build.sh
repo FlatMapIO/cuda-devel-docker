@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-# see also https://hub.docker.com/r/nvidia/cuda/tags
-for version in "12.6.1"; do
+# see also 
+# - https://hub.docker.com/r/nvidia/cuda/tags
+# - https://pytorch.org/get-started/previous-versions/
+for version in "11.8.0" "12.4.1" "12.6.1"; do
     tag="${version}-cudnn-devel-ubuntu22.04"
     docker build \
         --build-arg TAG=$tag \

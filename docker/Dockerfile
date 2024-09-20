@@ -26,8 +26,8 @@ RUN	sudo ln -s /home/linuxbrew/.linuxbrew /opt/homebrew
 RUN sudo apt-get remove -y git curl; \
   sudo rm -rf /var/lib/apt/lists/*
 
-ENV MODULAR_HOME=$HOME/.modular
-ENV PATH=/opt/homebrew/bin:$HOME/.cargo/bin:$HOME/.bun/bin:$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH
 ENV HOMEBREW_CURL_PATH=/opt/homebrew/bin/curl
+ENV MODULAR_HOME=$HOME/.modular
+ENV PATH=$HOME/.local/bin:/opt/homebrew/bin:$HOME/.cargo/bin:$HOME/.bun/bin:$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH
 
 # CMD which fish && fish -l || pkgx +fish fish -l
